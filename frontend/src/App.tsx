@@ -12,6 +12,7 @@ interface Message {
 const App: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
+  const [isExpanded, setIsExpanded] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -22,11 +23,18 @@ const App: React.FC = () => {
     const userInput = text || input;
     if (!userInput) return;
 
+
+    if (messages.length === 0) {
+      setIsExpanded(true);
+    }
+
     setMessages([...messages, { sender: 'user', text: userInput }]);
     setInput('');
 
+   
+
     try {
-      const response = await axios.post('http://localhost:8000/ask', {
+      const response = await axios.post('http://localhost:5000/ask', {
         question: userInput,
       });
       const answer = response.data.answer;
@@ -63,46 +71,33 @@ const App: React.FC = () => {
           <p className="subtitle">How can I help you today?</p>
         </div>
 
-        {/* CHAT BOX */}
-        <div
-          style={{
-            backgroundColor: '#addaf8ff',
-            borderRadius: '12px',
-            padding: '20px',
-            width: '100%',  
-            maxWidth: '600px',
-            height: '300px',
-            overflowY: 'auto',
-            marginBottom: '15px',
-          }}
-        >
-          {messages.map((msg, index) => (
-            <div
-              key={index}
-              style={{
-                textAlign: msg.sender === 'user' ? 'right' : 'left',
-                margin: '8px 0',
-              }}
-            >
-             <div
-            style={{
-            display: 'inline-block',
-            backgroundColor: msg.sender === 'user' ? '#5AA0E0' : '#E3F2FD',
-            color: '#0A2740',
-            padding: '10px 15px',
-            borderRadius: '18px',
-            maxWidth: '80%',
-            wordWrap: 'break-word',
-  }}
-              >
-                {msg.text}
-              </div>
-            </div>
-          ))}
-          <div ref={messagesEndRef}></div>
-        </div>
+        {/* QUICK BUTTONS - Solo aparecen cuando NO está expandido */}
+        {!isExpanded && (
+          <div className="buttons">
+            <button onClick={() => sendMessage('How can I get my student ID?')}>
+              How can I get My student ID?
+            </button>
+            <button onClick={() => sendMessage('Where can I submit my documents?')}>
+              Where Can I submit my documents?
+            </button>
+          </div>
+        )}
 
-        {/* INPUT + BUTTON */}
+        {/* CHAT BOX - Solo aparece cuando hay mensajes */}
+        {messages.length > 0 && (
+          <div className={isExpanded ? 'chat-box-expanded' : "chat-box"}>
+            {messages.map((msg, index) => (
+              <div key={index} className={`message-container ${msg.sender}`}>
+                <div className={`message-bubble ${msg.sender}`}>
+                  {msg.text}
+                </div>
+              </div>
+            ))}
+            <div ref={messagesEndRef}></div>
+          </div>
+        )}
+
+        {/* INPUT + BUTTON - Siempre visible */}
         <div className="search">
           <input
             type="text"
@@ -128,16 +123,6 @@ const App: React.FC = () => {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
-        </div>
-
-        {/* QUICK BUTTONS */}
-        <div className="buttons">
-          <button onClick={() => sendMessage('How can I get my student ID?')}>
-            How can I get My student ID?
-          </button>
-          <button onClick={() => sendMessage('Where can I submit my documents?')}>
-            Where Can I submit my documents?
           </button>
         </div>
       </div>

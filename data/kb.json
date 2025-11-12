@@ -100,14 +100,14 @@
   {
     "id": 15,
     "question": "What are the Dean's office's opening hours?",
-    "answer": "Dean’s Office opening hours may vary by faculty. Please check the latest schedule on the university portal or at the notice board near room 108.",
+    "answer": "Dean’s Office opening hours may vary by each day. Please check the latest schedule on the university portal or at the notice board near room 108.",
     "keywords": ["Dean’s Office", "opening hours", "schedule", "faculty office"],
     "source": "https://vistula.edu.pl/en/contact"
   },
   {
     "id": 16,
     "question": "How can I contact the Dean's Office?",
-    "answer": "You can contact the Dean’s Office in person at ul. Stokłosy 3, 02-787 Warsaw, by email at info@vistula.edu.pl, or by visiting during working hours.",
+    "answer": "You can contact the Dean’s Office in person on Monday and Thursdays, or by email at info@vistula.edu.pl.",
     "keywords": ["contact", "Dean’s Office", "email", "address", "visit"],
     "source": "https://vistula.edu.pl/en/contact"
   },
@@ -142,7 +142,7 @@
   {
     "id": 21,
     "question": "Where is the library?",
-    "answer": "The Academic Library is located on the main Vistula University campus at ul. Stokłosy 3, 02-787 Warsaw.",
+    "answer": "The Academic Library is located on the 1st floor of the main Vistula University campus.",
     "keywords": ["library", "location", "Vistula University", "campus"],
     "source": "https://vistula.edu.pl/en/intranet/library"
   },
@@ -171,7 +171,7 @@
     "id": 25,
     "question": "How many books can borrow at a time?",
     "answer": "You can borrow up to 4 books at a time from the Academic Library.",
-    "keywords": ["library", "borrow limit", "books", "rules"],
+    "keywords": ["library", "borrow", "limit", "books", "rules"],
     "source": "https://vistula.edu.pl/en/faq/library"
   },
   {
@@ -212,7 +212,7 @@
   { 
     "id": 31,
     "question": "Where can I find my schedule/timetable?",
-    "answer": "You can find your class schedule in USOSweb under the 'Timetable' section after registering for your courses.",
+    "answer": "You can find your class schedule in USOSweb after registering for your courses.",
     "keywords": ["schedule", "timetable", "USOSweb", "classes"],
     "source": "https://vistula.edu.pl/en/faq/technical-support"
   },
@@ -226,7 +226,7 @@
   {
     "id": 33,
     "question": "What can I do if I fail a class?",
-    "answer": "If you fail a class, you can participate in the resit examination or retake the course next semester. Contact your Dean’s Office for retake registration procedures.",
+    "answer": "If you fail a class, you can retake the course next semester. Contact your Dean’s Office for retake registration procedures.",
     "keywords": ["fail class", "resit exam", "retake course", "Dean’s Office"],
     "source": "https://vistula.edu.pl/wp-content/uploads/2025/06/2025_REGULAMIN_STUDIOW_AFiBV_2025_ENG.pdf"
   },
